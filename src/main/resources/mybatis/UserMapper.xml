@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.example.demo.dao.UserDao">  
+
+    <!-- insert user 其中keyProperty=user中的id字段-->
+    <insert id = "insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.example.demo.entity.User">
+        INSERT INTO USER(NAME,PASSWORD,AGE) VALUES(#{name},#{password},#{age});
+    </insert>
+   
+    <!-- update user -->
+    <update id="update" parameterType="com.example.demo.entity.User">
+        UPDATE USER SET NAME=#{name} , PASSWORD=#{password} , AGE = #{age} WHERE ID=#{id}
+    </update>
+    
+    <!-- find user by id-->
+    <select id="findById" parameterType="int" resultType="com.example.demo.entity.User">
+        SELECT ID,NAME,PASSWORD,AGE FROM USER WHERE ID=#{id}
+    </select>
+    
+    <!-- find user by name -->
+    <select id="findByName" parameterType="String" resultType="com.example.demo.entity.User">
+    	SELECT ID,NAME,PASSWORD,AGE FROM USER WHERE NAME=#{name}
+    </select>
+    
+    <!-- delete user -->
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM USER WHERE ID=#{id}
+    </delete>
+</mapper>
