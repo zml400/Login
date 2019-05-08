@@ -23,6 +23,11 @@
     	SELECT ID,NAME,PASSWORD,AGE FROM USER WHERE NAME=#{name}
     </select>
     
+    <!-- find all user -->
+    <select id="findAllUser" resultType="com.example.demo.entity.User">
+    	SELECT * FROM USER
+    </select>
+    
     <!-- delete user -->
     <delete id="deleteById" parameterType="int">
         DELETE FROM USER WHERE ID=#{id}

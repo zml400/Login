@@ -43,17 +43,22 @@ public class UserController {
 		return resultServer;
 	}
 	@RequestMapping(value = "/findUserById")
-	public ResultServer findUser(@RequestParam int id) {
+	public ResultServer<Integer> findUser(@RequestParam int id) {
 		ResultServer<Integer> resultServer=userService.findById(id);
 		return resultServer;
 	}
 	@RequestMapping(value = "/findUserByName/{name}")
-	public ResultServer findUser(@PathVariable("name") String name) {
+	public ResultServer<Integer> findUser(@PathVariable("name") String name) {
 		ResultServer<Integer> resultServer=userService.findByName(name);
 		return resultServer;
 	}
+	@RequestMapping(value = "/findAllUser")
+	public ResultServer<Integer> findAllUser() {
+		ResultServer<Integer> resultServer=userService.findAllUser();
+		return resultServer;
+	}
 	@RequestMapping(value = "/deleteById/{id}")
-	public ResultServer deleteUser(@PathVariable("id") int id,Model model) {
+	public ResultServer<Integer> deleteUser(@PathVariable("id") int id,Model model) {
 		ResultServer<Integer> resultServer=userService.deleteById(id);
 		return resultServer;
 	}

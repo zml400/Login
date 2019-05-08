@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -99,7 +101,7 @@ public class UserServiceImpl implements UserService{
     
     //根据名字查找用户
     @Override
-    public ResultServer findByName(String name) {
+    public ResultServer<Integer> findByName(String name) {
     	ResultServer<Integer> resultServer = new ResultServer<Integer>();
     	User user=userDao.findByName(name);
     	if(user!=null) {
@@ -113,9 +115,20 @@ public class UserServiceImpl implements UserService{
     	return resultServer;
     }
     
+    //查询所有用户
+   @Override
+   public ResultServer<Integer> findAllUser(){
+	   List<User> list = userDao.findAllUser();
+	   ResultServer<Integer> resultServer = new ResultServer<Integer>();
+	   resultServer.setCode(200);
+	   resultServer.setMessage("所有用户信息");
+	   resultServer.setData(list);
+	   return resultServer;
+   }
+    
     //根据id删除用户
     @Override
-    public ResultServer deleteById(int id){
+    public ResultServer<Integer> deleteById(int id){
     	ResultServer<Integer> resultServer = new ResultServer<Integer>();
     	User user=userDao.findById(id);
         if(user!=null) {

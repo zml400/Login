@@ -10,4 +10,5 @@ public interface UserService {
     public ResultServer<Integer> findById(int id);
     public ResultServer<Integer> findByName(String name);
     public ResultServer<Integer> deleteById(int id);
+    public ResultServer<Integer> findAllUser();
 }
