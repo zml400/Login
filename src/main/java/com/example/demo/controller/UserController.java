@@ -1,25 +1,15 @@
 package com.example.demo.controller;
-
-import javax.naming.spi.DirStateFactory.Result;
-
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dao.UserDao;
 import com.example.demo.entity.ResultServer;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
-@ComponentScan(value = {"com.example.demo.service"})
-@MapperScan("com.example.demo.dao")
 @RestController
 public class UserController {
 	@Autowired
