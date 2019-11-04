@@ -1,11 +1,7 @@
 package com.example.demo.entity;
 
 public class User {
-	private int id;
-	private String name;
-    private String password;
-    private int age;
-    public int getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -29,6 +25,9 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	   
+	private int id;
+	private String name;
+    private String password;
+    private int age;
+	
 }
