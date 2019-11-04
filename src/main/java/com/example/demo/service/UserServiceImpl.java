@@ -2,16 +2,13 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.ResultServer;
 import com.example.demo.entity.User;
 
-@ComponentScan(value={"com.example.demo.dao"})
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired
@@ -28,6 +25,11 @@ public class UserServiceImpl implements UserService{
 		}else if(user.getPassword()==null){
 			resultServer.setCode(402);
 			resultServer.setMessage("密码输入为空,请重新输入");
+			return resultServer;
+		}
+		if(userDao.findByName(user.getName())!=null) {
+			resultServer.setCode(403);
+			resultServer.setMessage("用户名已经注册，请重新输入");
 			return resultServer;
 		}
 		userDao.insert(user);
@@ -52,7 +54,7 @@ public class UserServiceImpl implements UserService{
 		}
     	User user = userDao.findByName(name);
     	if(user!=null) {
-    		if(user.getPassword()==password) {
+    		if(user.getPassword().equals(password)) {
 	    		resultServer.setCode(200);
 				resultServer.setMessage(name+":登陆成功");
 				resultServer.setData(user);
