@@ -15,12 +15,12 @@
     
     <!-- find user by id-->
     <select id="findById" parameterType="int" resultType="com.example.demo.entity.User">
-        SELECT ID,NAME,PASSWORD,AGE FROM USER WHERE ID=#{id}
+        SELECT * FROM USER WHERE id=#{id}
     </select>
     
     <!-- find user by name -->
     <select id="findByName" parameterType="String" resultType="com.example.demo.entity.User">
-    	SELECT ID,NAME,PASSWORD,AGE FROM USER WHERE NAME=#{name}
+    	SELECT * FROM USER WHERE NAME=#{name}
     </select>
     
     <!-- find all user -->
